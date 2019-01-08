@@ -39,6 +39,5 @@ public class ConsoleExercises {
 
         System.out.print("Length: " + length + "\nWidth: " + width + "\nHeight: " + height + "\nArea: " + area + "\nPerimeter: " + perimeter + "\nVolume: " + volume);
 
-
     }
 }
