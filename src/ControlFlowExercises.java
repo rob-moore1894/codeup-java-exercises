@@ -92,10 +92,11 @@ public class ControlFlowExercises {
             int userNumber = scanner.nextInt();
             printTable(userNumber);
 
-        System.out.println("Would you like to continue? [Y/N]");
-        userAnswer = scanner.next();
+            System.out.println("Would you like to continue? [Y/N]");
+            userAnswer = scanner.next();
         } while (userAnswer.equalsIgnoreCase("y"));
 
+        // ***** Letter Grade Conversion *****
         System.out.println("Enter a numerical grade: ");
         int grade = scanner.nextInt();
         char letterGrade;
