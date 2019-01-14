@@ -90,5 +90,7 @@ public class HelloWorld {
         r++;
         System.out.println(r);
 
+        int q = 5 * 4 % 3;
+        System.out.println("Q = " + q);
     }
 }

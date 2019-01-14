@@ -5,46 +5,56 @@ import java.lang.Math;
 public class MethodsExercises {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in).useDelimiter("\n");
+//
+//        int a = 5;
+//        int b = 2;
+//        System.out.println(add(a, b));
+//        System.out.println(subtract(a, b));
+//        System.out.println(multiply(a, b));
+//        System.out.println(divide(a, b));
+//        System.out.println(modulus(a, b));
+//        System.out.println(multiplyAgain(a,  b));
+//
+//
+//        System.out.println(factorial(getInteger(1, 10)));
+//
+//        rollDice();
+//
+//        System.out.println();
+//        System.out.println("Enter something: ");
+//        String input = scan.next();
+//        System.out.println("First character is: " + firstChar(input));
+//        System.out.println("Second character is: "+ secondChar(input));
+//        System.out.println("Second to last character is: " + secondToLastChar(input));
+//        System.out.println("Last character is: " + lastChar(input));
+//        System.out.println("Does \"" + input + "\" have vowels? " + hasVowels(input));
+//        System.out.println("\"" + input + "\" has " + countVowels(input) + " vowels");
+//
+//        System.out.println(userWantsToContinue());
+//
+//        System.out.println("Enter a number: ");
+//        int number = scan.nextInt();
+//        System.out.println("Is " + number + " even? " + isEven(number));
+//        System.out.println("Is " + number + " odd? " + isOdd(number));
+//
+//        System.out.println("Enter a second number: ");
+//        int secondNumber = scan.nextInt();
+//        System.out.println("The number of odd numbers between " + number + " and " + secondNumber + " is: " + countOdds(number, secondNumber));
+//        System.out.println("The number of even numbers between " + number + " and " + secondNumber + " is: " + countEvens(number, secondNumber));
+//
+//        System.out.println("Enter a letter: ");
+//        String letter = scan.next();
+//        System.out.println("Is \"" + letter + "\" a vowel? " + isVowel(letter));
 
-        int a = 5;
-        int b = 2;
-        System.out.println(add(a, b));
-        System.out.println(subtract(a, b));
-        System.out.println(multiply(a, b));
-        System.out.println(divide(a, b));
-        System.out.println(modulus(a, b));
-        System.out.println(multiplyAgain(a,  b));
-
-
-        System.out.println(factorial(getInteger(1, 10)));
-
-        rollDice();
-
-        System.out.println();
-        System.out.println("Enter something: ");
-        String input = scan.next();
-        System.out.println("First character is: " + firstChar(input));
-        System.out.println("Second character is: "+ secondChar(input));
-        System.out.println("Second to last character is: " + secondToLastChar(input));
-        System.out.println("Last character is: " + lastChar(input));
-        System.out.println("Does \"" + input + "\" have vowels? " + hasVowels(input));
-        System.out.println("\"" + input + "\" has " + countVowels(input) + " vowels");
-
-        System.out.println(userWantsToContinue());
-
-        System.out.println("Enter a number: ");
-        int number = scan.nextInt();
-        System.out.println("Is " + number + " even? " + isEven(number));
-        System.out.println("Is " + number + " odd? " + isOdd(number));
-
-        System.out.println("Enter a second number: ");
-        int secondNumber = scan.nextInt();
-        System.out.println("The number of odd numbers between " + number + " and " + secondNumber + " is: " + countOdds(number, secondNumber));
-        System.out.println("The number of even numbers between " + number + " and " + secondNumber + " is: " + countEvens(number, secondNumber));
-
-        System.out.println("Enter a letter: ");
-        String letter = scan.next();
-        System.out.println("Is \"" + letter + "\" a vowel? " + isVowel(letter));
+        System.out.println("Enter a number to check if it's prime: ");
+        int p = scan.nextInt();
+        checkPrime(p);
+        if (checkPrime(p))
+            System.out.println("\"" + p + "\" is Prime");
+        else
+            System.out.println("\"" + p + "\" is NOT Prime");
+        isPrime(p);
+        showPrimes();
 
 
     }// End of main()
@@ -233,6 +243,103 @@ public class MethodsExercises {
 //
 //    Write a method named isPrime() that that accepts in an integer number and returns a boolean if the number is evenly divisible only by either 1 or the number itself.
 
+// Java code to check if number is prime. This
+// program demonstrates concept behind AKS
+// algorithm and doesn't implement the actual
+// algorithm (This works only till n = 64)
+
+
+            // array used to store coefficients .
+
+
+            // function to calculate the coefficients
+            // of (x - 1)^n - (x^n - 1) with the help
+            // of Pascal's triangle .
+        public static void coef(int n) {
+            long c[] = new long[1000];
+            {
+                c[0] = 1;
+                for (int i = 0; i < n; c[0] = -c[0], i++) {
+                    c[1 + i] = 1;
+
+                    for (int j = i; j > 0; j--)
+                        c[j] = c[j - 1] - c[j];
+                }
+            }
+        }
+
+            // function to check whether
+            // the number is prime or not
+        public static boolean checkPrime(int n){
+                // Calculating all the coefficients by
+                // the function coef and storing all
+                // the coefficients in c array .
+            coef(n);
+
+                // subtracting c[n] and adding c[0] by 1
+                // as ( x - 1 )^n - ( x^n - 1), here we
+                // are subtracting c[n] by 1 and adding
+                // 1 in expression.
+            c[0]++;
+            c[n]--;
+
+                // checking all the coefficients whether
+                // they are divisible by n or not.
+                // if n is not prime, then loop breaks
+                // and (i > 0).
+            int i = n;
+            while ((i--) > 0 && c[i] % n == 0)
+                ;
+
+//                Return true if all coefficients are
+//                 divisible by n.
+            return i < 0;
+        }
 
 //    Write a method named getTwentyPrimes() that returns a string containing the first 20 prime numbers, each separated by a comma. Output: "1, 2, 3, 5, 7, 11, 13, 17, 19"... until we have a total count of 20 primes in the string.
+
+    public static final long[] c = new long[100];
+
+    public static void coeff(int n) {
+        c[0] = 1;
+        for (int i = 0; i < n; c[0] = -c[0], i++) {
+            c[1 + i] = 1;
+            for (int j = i; j > 0; j--)
+                c[j] = c[j - 1] - c[j];
+        }
+    }
+
+    public static boolean isPrime(int n) {
+        coeff(n);
+        c[0]++;
+        c[n]--;
+
+        int i = n;
+        while (i-- != 0 && c[i] % n == 0)
+            continue;
+        return i < 0;
+    }
+
+    public static void show(int n) {
+        System.out.print("(x-1)^" + n + " =");
+        for (int i = n; i >= 0; i--) {
+            System.out.print(" + " + c[i] + "x^" + i);
+        }
+        System.out.println();
+    }
+
+    public static void showPrimes() {
+        for (int n = 0; n < 10; n++) {
+            coeff(n);
+            show(n);
+        }
+
+        System.out.print("Primes:");
+        for (int n = 1; n < c.length; n++)
+            if (isPrime(n))
+                System.out.printf(" %d", n);
+
+        System.out.println();
+    }
+
 } // End of class
