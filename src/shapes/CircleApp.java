@@ -10,5 +10,7 @@ public class CircleApp {
         Circle circle2 = new Circle(5);
         System.out.println(circle1);
         System.out.println(circle2);
+
+        System.out.println("There are " + Circle.getNumberOfCircles() + " circles created.");
     }
 }
