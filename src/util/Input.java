@@ -34,9 +34,15 @@ public class Input {
 
     public int getInt(int min, int max) {
         System.out.println("Please enter a number within the min and max parameters");
-        int userInput = scanner.nextInt();
-        if (userInput >= min && userInput <= max) {
-            return userInput;
+        String userInput = scanner.next();
+        int num = 0;
+        try{
+            num = Integer.valueOf(userInput);
+        } catch (NumberFormatException ex){
+            System.out.println(ex);
+        }
+        if (num >= min && num <= max) {
+            return num;
         } else {
             System.out.println("The number must be between" + min + " and " + max);
             return getInt(min, max);
@@ -44,7 +50,16 @@ public class Input {
     }
 
     public int getInt() {
-        return scanner.nextInt();
+        System.out.println("Enter a number: ");
+        String input;
+
+         try{
+             input = scanner.next();
+             return Integer.valueOf(input);
+         } catch (NumberFormatException ex){
+             System.out.println("Enter a valid integer!");
+             return getInt();
+         }
     }
 
     public int getInt(String prompt) {
@@ -57,13 +72,20 @@ public class Input {
         if (userDouble >= min && userDouble <= max) {
             return userDouble;
         } else {
-            System.out.println("The double must be between " + min + " and " + max);
+            System.out.println("The number must be between " + min + " and " + max);
             return getDouble(min, max);
         }
     }
 
     public double getDouble() {
-        return scanner.nextDouble();
+        String input;
+        try{
+            input = scanner.next();
+            return Double.valueOf(input);
+        } catch (NumberFormatException ex){
+            System.out.println("Enter a valid integer!");
+            return getDouble();
+        }
     }
 
     public double getDouble(String prompt) {

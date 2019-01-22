@@ -2,7 +2,7 @@ package grades;
 
 import java.util.HashMap;
 
-public class GradesaApplication {
+public class GradesApplication {
     public static void main(String[] args) {
         HashMap<String, Student> students = new HashMap<>();
 
@@ -43,18 +43,18 @@ public class GradesaApplication {
         System.out.println(usernames);
         System.out.println();
 
-        String input;
-        do {
-            System.out.println("What student would you like to see more information on?");
-            if (students.containsKey(input)){
-                System.out.println("Name: " + students.get(input).getName() + " - Github Username: " + input);
-                System.out.println("Current Average: " + students.get(input).getGradeAverage());
-                System.out.println();
-            } else {
-                System.out.println("Goodbye, and have a wonderful day!");
-            }
-
-        } while(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"));
+//        String input;
+//        do {
+//            System.out.println("What student would you like to see more information on?");
+//            if (students.containsKey(input)){
+//                System.out.println("Name: " + students.get(input).getName() + " - Github Username: " + input);
+//                System.out.println("Current Average: " + students.get(input).getGradeAverage());
+//                System.out.println();
+//            } else {
+//                System.out.println("Goodbye, and have a wonderful day!");
+//            }
+//
+//        } while(input.equalsIgnoreCase("y") || input.equalsIgnoreCase("yes"));
 
     }
 }
