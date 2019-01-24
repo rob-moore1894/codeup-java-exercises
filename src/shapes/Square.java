@@ -1,29 +1,35 @@
 package shapes;
 
-public class Square extends Quadrilateral{
+// 6.Change your existing Square class to extend Quadrilateral.
+public class Square extends Quadrilateral {
 
-    public Square(double side){
+    // 1.Remove the code from the body of your Rectangle and Square classes.
+
+    public Square(int side) {
         super(side, side);
     }
 
-    @Override
-    public double getArea() {
-        return Math.pow(length, 2);
+    // Because the length of all sides of a square are the same, the methods for setting the length and the width should set both protected properties.
+    @Override// implement Quadrilateral
+    public void setLength(double side) {
+        this.length = side;
+        this.width = side;
     }
 
-    @Override
+    @Override// implement Quadrilateral
+    public void setWidth(double side) {
+        this.length = side;
+        this.width = side;
+    }
+
+    @Override// implement Measurable
     public double getPerimeter() {
-        return 4 * length;
+        return (2 * length) + (2 * width);
     }
 
-    @Override
-    public void setLength(double length) {
-        this.length = length;
+    @Override// implement Measurable
+    public double getArea() {
+        return length * width;
     }
 
-    @Override
-    public void setWidth(double width) {
-        this.width = width;
-
-    }
-}// End of Square Class
+}// class
